@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f8f2e8" />
+    <title>La Cenaduría | CAREM</title>
+    <link rel="icon" href="img/Icono-CAREM.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="La Cenaduría, inicio">
+        <img
+          class="brand-mark"
+          src="img/Logo-CAREM.png"
+          alt="Logo de Cenaduría CAREM"
+        />
+        <span
+          ><span class="brand-name">La Cenaduría</span><br /><span
+            class="brand-caption"
+            >Sabor de casa, hecho al momento</span
+          ></span
+        >
+      </a>
+      <span class="orders-badge">Pedidos por WhatsApp</span>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <span class="eyebrow">Una noche con mucho sabor</span>
+          <h1 id="hero-title">Se te antoja.<br />Te lo preparamos.</h1>
+          <p>
+            Gorditas, tostadas, garnachas y tlayudas, preparadas a tu gusto y
+            listas para disfrutar.
+          </p>
+          <a class="hero-button" href="#menu"
+            >Armar mi pedido <span aria-hidden="true">↓</span></a
+          >
+        </div>
+        <!-- <div class="hero-art" aria-hidden="true">
+          <video class="hero-art-img" autoplay muted loop playsinline>
+            <source src="video/Carem.mp4" type="video/mp4" />
+          </video>
+        </div> -->
+      </section>
+
+      <section id="menu" aria-labelledby="menu-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="menu-title">Nuestro menú</h2>
+            <p id="Elige">Elige tu antojo y personalízalo como más te gusta.</p>
+            <!-- <p class="water-of-day"><strong>Agua fresca del día:</strong> Naranja</p> -->
+          </div>
+          <!-- <span class="price-note">Precios en pesos mexicanos (MXN)</span> -->
+        </div>
+        <div class="menu-layout">
+          <div class="menu-grid">
+            <article class="menu-card" data-product="Gordita">
+              <button class="dish-button" type="button" aria-haspopup="dialog">
+                <span class="dish-art" aria-hidden="true">
+                  <img src="img/Gorditas asadas.jpeg" alt="" />
+                </span>
+                <span class="dish-button-label"
+                  >Gorditas <span aria-hidden="true">→</span></span
+                >
+              </button>
+              <dialog class="product-dialog" aria-labelledby="gordita-title">
+                <div class="dialog-header">
+                  <h3 id="gordita-title">Gorditas</h3>
+                  <button
+                    class="dialog-close"
+                    type="button"
+                    aria-label="Cerrar Gorditas"
+                  >
+                    ×
+                  </button>
+                </div>
+                <div class="dish-content">
+                  <p class="price-list">
+                    Sencillo de quesillo o de carne: orden de 5 por $35 · Doble:
+                    $15 por pieza
+                  </p>
+                  <p>
+                    Calientitas, doraditas y con tus ingredientes favoritos.
+                  </p>
+                  <div class="option-grid">
+                    <div class="option">
+                      <label for="gordita-count">Porción</label
+                      ><select id="gordita-count">
+                        <option>Sencillo de quesillo</option>
+                        <option>Sencillo de carne</option>
+                        <option>Doble</option>
+                      </select>
+                    </div>
+                    <div class="option">
+                      <label for="gordita-pieces">Órdenes (5 piezas c/u)</label
+                      ><input
+                        id="gordita-pieces"
+                        class="product-quantity"
+                        type="number"
+                        min="1"
+                        step="1"
+                        value="1"
+                        inputmode="numeric"
+                        required
+                      />
+                    </div>
+                    <div class="option">
+                      <label for="gordita-preparation">Preparación</label
+                      ><select id="gordita-preparation">
+                        <option>Asado (al carbon)</option>
+                        <option>Frito (en aceite)</option>
+                      </select>
+                    </div>
+                    <div class="option">
+                      <label for="gordita-cabbage">Repollo</label
+                      ><select id="gordita-cabbage">
+                        <option>Con repollo</option>
+                        <option>Sin repollo</option>
+                      </select>
+                    </div>
+                    <div class="option">
+                      <label for="gordita-sorrapa">Sorrapa</label
+                      ><select id="gordita-sorrapa">
+                        <option>Con sorrapa</option>
+                        <option>Sin sorrapa</option>
+                      </select>
+                    </div>
+                    <div class="option">
+                      <label for="gordita-salsa">Salsa</label
+                      ><select id="gordita-salsa">
+                        <option>Salsa incluida</option>
+                        <option>Salsa aparte</option>
+                        <option>Sin salsa</option>
+                      </select>
+                    </div>
+                    <div class="option">
+                      <label for="gordita-salad">Ensalada</label
+                      ><select id="gordita-salad">
+                        <option>Con ensalada</option>
+                        <option>Sin ensalada</option>
+                      </select>
+                    </div>
+                  </div>
+                  <button class="add-button" type="button">
+                    Agregar al pedido +
+                  </button>
+                </div>
+              </dialog>
+            </article>
+            <article class="menu-card" data-product="Tostada">
+              <button class="dish-button" type="button" aria-haspopup="dialog">
+                <span class="dish-art" aria-hidden="true">
+                  <img src="img/Tostadas.jpeg" alt="" />
+                </span>
+                <span class="dish-button-label"
+                  >Tostadas <span aria-hidden="true">→</span></span
+                >
+              </button>
+              <dialog class="product-dialog" aria-labelledby="tostada-title">
+                <div class="dialog-header">
+                  <h3 id="tostada-title">Tostadas</h3>
+                  <button
+                    class="dialog-close"
+                    type="button"
+                    aria-label="Cerrar Tostadas"
+                  >
+                    ×
+                  </button>
+                </div>
+                <div class="dish-content">
+                  <p class="price-list">
+                    Sencillo de quesillo o de carne: $10 por pieza · Doble: $15
+                    por pieza
+                  </p>
+                  <p>Crujientes y bien servidas, con todo el sabor de casa.</p>
+                  <div class="option-grid">
+                    <div class="option">
+                      <label for="tostada-count">Porción</label
+                      ><select id="tostada-count">
+                        <option>Sencillo de quesillo</option>
+                        <option>Sencillo de carne</option>
+                        <option>Doble</option>
+                      </select>
+                    </div>
+                    <div class="option">
+                      <label for="tostada-pieces">Piezas</label
+                      ><input
+                        id="tostada-pieces"
+                        class="product-quantity"
+                        type="number"
+                        min="1"
+                        step="1"
+                        value="1"
+                        inputmode="numeric"
+                        required
+                      />
+                    </div>
+                    <div class="option">
+                      <label for="tostada-cabbage">Repollo</label
+                      ><select id="tostada-cabbage">
+                        <option>Con repollo</option>
+                        <option>Sin repollo</option>
+                      </select>
+                    </div>
+                    <div class="option">
+                      <label for="tostada-salsa">Salsa</label
+                      ><select id="tostada-salsa">
+                        <option>Salsa incluida</option>
+                        <option>Salsa aparte</option>
+                        <option>Sin salsa</option>
+                      </select>
+                    </div>
+                    <div class="option">
+                      <label for="tostada-salad">Ensalada</label
+                      ><select id="tostada-salad">
+                        <option>Con ensalada</option>
+                        <option>Sin ensalada</option>
+                      </select>
+                    </div>
+                  </div>
+                  <button class="add-button" type="button">
+                    Agregar al pedido +
+                  </button>
+                </div>
+              </dialog>
+            </article>
+            <article class="menu-card" data-product="Garnacha">
+              <button class="dish-button" type="button" aria-haspopup="dialog">
+                <span class="dish-art" aria-hidden="true">
+                  <img src="img/Garnachas.jpeg" alt="" />
+                </span>
+                <span class="dish-button-label"
+                  >Garnachas <span aria-hidden="true">→</span></span
+                >
+              </button>
+              <dialog class="product-dialog" aria-labelledby="garnacha-title">
+                <div class="dialog-header">
+                  <h3 id="garnacha-title">Garnachas</h3>
+                  <button
+                    class="dialog-close"
+                    type="button"
+                    aria-label="Cerrar Garnachas"
+                  >
+                    ×
+                  </button>
+                </div>
+                <div class="dish-content">
+                  <p class="price-list">
+                    Sencillo de quesillo, de carne o doble: orden de 5 piezas
+                    por $35
+                  </p>
+                  <p>Tradición y sazón en cada mordida, recién hechas.</p>
+                  <div class="option-grid">
+                    <div class="option">
+                      <label for="garnacha-pieces">Órdenes (5 piezas c/u)</label
+                      ><input
+                        id="garnacha-pieces"
+                        class="product-quantity"
+                        type="number"
+                        min="1"
+                        step="1"
+                        value="1"
+                        inputmode="numeric"
+                        required
+                      />
+                    </div>
+                    <div class="option">
+                      <label for="garnacha-cabbage">Repollo</label
+                      ><select id="garnacha-cabbage">
+                        <option>Con repollo</option>
+                        <option>Sin repollo</option>
+                      </select>
+                    </div>
+                    <div class="option">
+                      <label for="garnacha-salsa">Salsa</label
+                      ><select id="garnacha-salsa">
+                        <option>Salsa incluida</option>
+                        <option>Salsa aparte</option>
+                        <option>Sin salsa</option>
+                      </select>
+                    </div>
+                    <div class="option">
+                      <label for="garnacha-salad">Ensalada</label
+                      ><select id="garnacha-salad">
+                        <option>Con ensalada</option>
+                        <option>Sin ensalada</option>
+                      </select>
+                    </div>
+                  </div>
+                  <button class="add-button" type="button">
+                    Agregar al pedido +
+                  </button>
+                </div>
+              </dialog>
+            </article>
+            <article class="menu-card" data-product="Tlayuda">
+              <button class="dish-button" type="button" aria-haspopup="dialog">
+                <span class="dish-art" aria-hidden="true">
+                  <img src="img/Tlayudas.jpeg" alt="" />
+                </span>
+                <span class="dish-button-label"
+                  >Tlayudas <span aria-hidden="true">→</span></span
+                >
+              </button>
+              <dialog class="product-dialog" aria-labelledby="tlayuda-title">
+                <div class="dialog-header">
+                  <h3 id="tlayuda-title">Tlayudas</h3>
+                  <button
+                    class="dialog-close"
+                    type="button"
+                    aria-label="Cerrar Tlayudas"
+                  >
+                    ×
+                  </button>
+                </div>
+                <div class="dish-content">
+                  <p class="price-list">
+                    Sencilla mediana: $70 · grande: $90<br />Doble mediana: $80
+                    · grande: $100
+                  </p>
+                  <p>Un clásico para compartir o para consentirte en grande.</p>
+                  <div class="option-grid">
+                    <div class="option">
+                      <label for="tlayuda-size">Tamaño</label
+                      ><select id="tlayuda-size">
+                        <option>Mediano</option>
+                        <option>Grande</option>
+                      </select>
+                    </div>
+                    <div class="option">
+                      <label for="tlayuda-count">Porción</label
+                      ><select id="tlayuda-count">
+                        <option>Sencillo de quesillo</option>
+                        <option>Sencillo de carne</option>
+                        <option>Doble</option>
+                      </select>
+                    </div>
+                    <div class="option">
+                      <label for="tlayuda-pieces">Piezas</label
+                      ><input
+                        id="tlayuda-pieces"
+                        class="product-quantity"
+                        type="number"
+                        min="1"
+                        step="1"
+                        value="1"
+                        inputmode="numeric"
+                        required
+                      />
+                    </div>
+                    <div class="option">
+                      <label for="tlayuda-cabbage">Repollo</label
+                      ><select id="tlayuda-cabbage">
+                        <option>Con repollo</option>
+                        <option>Sin repollo</option>
+                      </select>
+                    </div>
+                    <div class="option">
+                      <label for="tlayuda-sorrapa">Sorrapa</label
+                      ><select id="tlayuda-sorrapa">
+                        <option>Con sorrapa</option>
+                        <option>Sin sorrapa</option>
+                      </select>
+                    </div>
+                    <div class="option">
+                      <label for="tlayuda-salsa">Salsa</label
+                      ><select id="tlayuda-salsa">
+                        <option>Salsa incluida</option>
+                        <option>Salsa aparte</option>
+                        <option>Sin salsa</option>
+                      </select>
+                    </div>
+                    <div class="option">
+                      <label for="tlayuda-salad">Ensalada</label
+                      ><select id="tlayuda-salad">
+                        <option>Con ensalada</option>
+                        <option>Sin ensalada</option>
+                      </select>
+                    </div>
+                  </div>
+                  <button class="add-button" type="button">
+                    Agregar al pedido +
+                  </button>
+                </div>
+              </dialog>
+            </article>
+            <article class="menu-card water-card" aria-labelledby="water-title">
+              <div class="dish-art" aria-hidden="true">🥤</div>
+              <div class="dish-content">
+                <div class="dish-title">
+                  <h3 id="water-title">
+                    Agua fresca del día:
+                    <span id="water-of-day-flavor">Naranja</span>
+                  </h3>
+                </div>
+                <p class="price-list">$25 por bolsa</p>
+                <div class="option-grid">
+                  <div class="option">
+                    <label for="water-choice">¿Quieres agua fresca?</label>
+                    <select id="water-choice">
+                      <option value="no">No, gracias</option>
+                      <option value="yes">Sí, quiero</option>
+                    </select>
+                  </div>
+                  <div class="option">
+                    <label for="water-quantity">Cantidad de bolsas</label>
+                    <input
+                      id="water-quantity"
+                      type="number"
+                      min="1"
+                      step="1"
+                      value="0"
+                      inputmode="numeric"
+                      disabled
+                    />
+                  </div>
+                </div>
+                <button id="add-water-button" class="add-button" type="button">
+                  Agregar al pedido +
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <aside class="panel" aria-labelledby="order-title">
+            <h2 id="order-title">Tu pedido</h2>
+            <p class="panel-intro">
+              Revisa tus antojos y dinos dónde los llevamos.
+            </p>
+            <div id="cart-list" class="cart-list" aria-live="polite">
+              <div class="empty-cart">
+                Aún no agregas nada. ¡Elige algo rico!
+              </div>
+            </div>
+            <section
+              class="price-summary"
+              aria-label="Resumen de precios"
+              aria-live="polite"
+            >
+              <div>
+                <span>Subtotal</span><strong id="subtotal">$0.00</strong>
+              </div>
+              <div>
+                <span>Entrega a domicilio</span
+                ><strong id="delivery-fee">$0.00</strong>
+              </div>
+              <div class="grand-total">
+                <span>Total</span><strong id="order-total">$0.00</strong>
+              </div>
+            </section>
+            <form id="order-form">
+              <div class="form-field">
+                <label for="customer-name">Tu nombre</label
+                ><input
+                  id="customer-name"
+                  name="name"
+                  autocomplete="name"
+                  required
+                  placeholder="¿A nombre de quién?"
+                />
+              </div>
+              <div class="form-field">
+                <label for="customer-phone">Tu teléfono</label
+                ><input
+                  id="customer-phone"
+                  name="phone"
+                  type="tel"
+                  inputmode="numeric"
+                  autocomplete="tel"
+                  pattern="[0-9]{10}"
+                  minlength="10"
+                  title="Ingresa exactamente 10 dígitos, sin espacios ni guiones."
+                  required
+                  placeholder="10 dígitos"
+                />
+              </div>
+              <div class="form-field">
+                <label for="delivery-type"
+                  >¿Cómo quieres recibir tu pedido?</label
+                >
+                <select id="delivery-type" name="deliveryType">
+                  <option value="Entrega a domicilio">
+                    Entrega a domicilio
+                  </option>
+                  <option value="Recoger en la cenaduría">
+                    Recoger en la cenaduría
+                  </option>
+                </select>
+              </div>
+              <div id="delivery-details">
+                <div class="form-field">
+                  <label for="customer-address">Describe tu domicilio</label
+                  ><textarea
+                    id="customer-address"
+                    name="address"
+                    rows="2"
+                    required
+                    placeholder="Calle, número, colonia, color de casa y referencias"
+                  ></textarea>
+                </div>
+                <div class="form-field">
+                  <label>Ubicación actual (opcional)</label>
+                  <p class="fine-print">
+                    Si estás en el lugar de entrega, comparte tu ubicación para
+                    incluir un enlace de Google Maps en tu pedido. El navegador
+                    te pedirá permiso.
+                  </p>
+                  <button
+                    id="get-location"
+                    class="whatsapp-button"
+                    type="button"
+                  >
+                    Agregar mi ubicación actual
+                  </button>
+                  <button
+                    id="clear-location"
+                    class="remove-button hidden"
+                    type="button"
+                  >
+                    Quitar ubicación
+                  </button>
+                  <p id="location-status" class="fine-print" role="status"></p>
+                </div>
+              </div>
+              <div class="form-field">
+                <label>¿Cómo pagas?</label>
+                <div class="payment-choice">
+                  <label
+                    ><input
+                      type="radio"
+                      name="payment"
+                      value="Pago exacto"
+                      checked
+                    />
+                    Pago exacto</label
+                  >
+                  <label
+                    ><input
+                      type="radio"
+                      name="payment"
+                      value="Necesito cambio"
+                    />
+                    Necesito cambio</label
+                  >
+                </div>
+              </div>
+              <div id="change-field" class="form-field hidden">
+                <label for="change-amount">¿Con cuánto pagas?</label
+                ><input
+                  id="change-amount"
+                  name="changeAmount"
+                  type="number"
+                  min="0.01"
+                  step="0.01"
+                  inputmode="decimal"
+                  placeholder="Ej. 500"
+                />
+              </div>
+              <div class="form-field">
+                <label for="order-notes">Notas para tu pedido (opcional)</label
+                ><input
+                  id="order-notes"
+                  name="notes"
+                  placeholder="Algún detalle adicional"
+                />
+              </div>
+              <button class="primary-button" type="submit">
+                Preparar pedido en WhatsApp <span aria-hidden="true">↗</span>
+              </button>
+              <p class="fine-print">
+                Al presionar el botón, se abrirá directamente WhatsApp con tu
+                pedido dirigido a la cenaduría.
+              </p>
+            </form>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <div
+      id="cart-feedback"
+      class="cart-feedback"
+      role="status"
+      aria-live="polite"
+    ></div>
+    <section class="policies" aria-label="Políticas del sitio">
+      <details id="privacy">
+        <summary>Aviso de privacidad</summary>
+        <div class="policy-content">
+          <p>
+            <strong>Responsable:</strong> La Cenaduría. Para dudas o solicitudes
+            relacionadas con tus datos, puedes contactarnos por WhatsApp al
+            <a
+              href="https://wa.me/529711559298"
+              target="_blank"
+              rel="noopener noreferrer"
+              >971 155 9298</a
+            >.
+          </p>
+          <p>
+            Al preparar un pedido, puedes proporcionar tu nombre, teléfono,
+            domicilio, ubicación compartida, productos y preferencias, forma de
+            pago y notas. La página utiliza estos datos únicamente para preparar
+            el mensaje de pedido que tú decides abrir y enviar por WhatsApp. No
+            se envían automáticamente desde la página ni se guardan en una base
+            de datos o almacenamiento local del sitio.
+          </p>
+          <p>
+            Si eliges agregar tu ubicación actual y autorizas el permiso del
+            navegador, la página utiliza tus coordenadas para crear un enlace
+            que se incluirá en el mensaje de WhatsApp. La ubicación es opcional.
+          </p>
+          <p>
+            Al abrir WhatsApp y enviar el mensaje, compartes los datos con La
+            Cenaduría y WhatsApp/Meta. El tratamiento que hagan WhatsApp/Meta y
+            Google Maps se rige por sus propios avisos de privacidad. No
+            incluyas información personal que no sea necesaria para completar tu
+            pedido.
+          </p>
+          <p>
+            La página no controla los registros técnicos que pudiera generar el
+            servicio donde esté alojada. La Cenaduría debe limitar cualquier
+            conservación posterior de mensajes a lo necesario para atender el
+            pedido y cumplir obligaciones aplicables. Puedes solicitar acceso,
+            rectificación o eliminación de la información compartida con La
+            Cenaduría escribiendo al número indicado; los derechos y plazos
+            aplicables se atenderán conforme a la legislación vigente.
+          </p>
+        </div>
+      </details>
+      <details id="cookies">
+        <summary>Uso de cookies</summary>
+        <div class="policy-content">
+          <p>
+            Esta página no instala ni consulta cookies, no utiliza
+            almacenamiento local para guardar pedidos y no emplea herramientas
+            propias de publicidad o analítica. Los datos del carrito solo se
+            mantienen temporalmente en la memoria de la página mientras la usas.
+          </p>
+          <p>
+            Si abres WhatsApp o Google Maps, esos servicios externos pueden usar
+            cookies o tecnologías similares de acuerdo con sus propias
+            políticas. La Cenaduría no controla dichas tecnologías.
+          </p>
+        </div>
+      </details>
+      <details id="terms">
+        <summary>Condiciones de uso</summary>
+        <div class="policy-content">
+          <p>
+            El menú permite armar una solicitud y abrir directamente el chat de
+            WhatsApp de La Cenaduría con los detalles. El pedido no queda
+            confirmado hasta que La Cenaduría confirme por WhatsApp la
+            disponibilidad y el tiempo o modalidad de entrega.
+          </p>
+          <p>
+            Los precios de los alimentos y del agua fresca aparecen en el menú.
+            La entrega a domicilio tiene una comisión de $15 MXN y depende de la
+            disponibilidad del servicio; también puedes elegir recoger en la
+            cenaduría. Revisa que el teléfono, domicilio y enlace de ubicación
+            sean correctos antes de enviar el mensaje.
+          </p>
+          <p>
+            Esta página no procesa pagos ni garantiza la disponibilidad de
+            productos. Al continuar a WhatsApp o Google Maps, también aplican
+            los términos y políticas de esos servicios. Para solicitar cambios o
+            aclarar un pedido, comunícate directamente con La Cenaduría al
+            <a
+              href="https://wa.me/529711559298"
+              target="_blank"
+              rel="noopener noreferrer"
+              >971 155 9298</a
+            >.
+          </p>
+        </div>
+      </details>
+      <!-- <p class="policy-note">Información general del sitio; no sustituye asesoría legal. La Cenaduría debe verificar estos textos y completar cualquier dato de identificación o contacto que exija la normativa aplicable.</p> -->
+    </section>
+    <footer>
+      &copy; 2026 La Cenaduría · Hecho con cariño y mucho sabor. Todos los derechos
+      reservados, elaborado por:JRG
+    </footer>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
