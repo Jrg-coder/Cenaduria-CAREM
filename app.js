@@ -10,6 +10,8 @@
   const locationButton = document.getElementById("get-location");
   const clearLocationButton = document.getElementById("clear-location");
   const locationStatus = document.getElementById("location-status");
+  const changeAmount = document.getElementById("change-amount");
+  const changeError = document.getElementById("change-error");
   let locationUrl = "";
   let locationPending = false;
   let locationRequest = 0;
@@ -26,13 +28,29 @@
 
   function getProductPrice(product, portion, size) {
     if (product === "Gordita") {
-      return portion.startsWith("Sencillo")
-        ? { amount: 35, unit: "orden", piecesPerUnit: 5 }
-        : { amount: 15, unit: "pieza", piecesPerUnit: 1 };
+      if (portion === "Sencillo de quesillo") {
+        return { amount: 35, unit: "orden", piecesPerUnit: 5 };
+      }
+      if (portion === "Sencillo de carne") {
+        return { amount: 10, unit: "pieza", piecesPerUnit: 1 };
+      }
+      if (portion === "Doble") {
+        return { amount: 15, unit: "pieza", piecesPerUnit: 1 };
+      }
+      throw new Error("No hay precio configurado para la porción seleccionada.");
     }
 
     if (product === "Tostada") {
-      return { amount: portion.startsWith("Sencillo") ? 10 : 15, unit: "pieza", piecesPerUnit: 1 };
+      if (portion === "Sencillo de quesillo") {
+        return { amount: 20, unit: "orden", piecesPerUnit: 3 };
+      }
+      if (portion === "Sencillo de carne") {
+        return { amount: 10, unit: "pieza", piecesPerUnit: 1 };
+      }
+      if (portion === "Doble") {
+        return { amount: 15, unit: "pieza", piecesPerUnit: 1 };
+      }
+      throw new Error("No hay precio configurado para la porción seleccionada.");
     }
 
     if (product === "Garnacha") {
@@ -41,10 +59,10 @@
 
     if (product === "Tlayuda") {
       const prices = {
-        "Sencillo de quesillo Mediano": 70,
-        "Sencillo de quesillo Grande": 90,
-        "Sencillo de carne Mediano": 70,
-        "Sencillo de carne Grande": 90,
+        "Sencillo de quesillo Mediano": 65,
+        "Sencillo de quesillo Grande": 80,
+        "Sencillo de carne Mediano": 65,
+        "Sencillo de carne Grande": 80,
         "Doble Mediano": 80,
         "Doble Grande": 100
       };
@@ -241,16 +259,62 @@
       });
     }
     updatePriceSummary();
+    updateChangeValidation();
+  }
+
+  function getSubtotal() {
+    return cart.reduce(function (sum, item) {
+      return sum + item.lineTotal;
+    }, 0);
+  }
+
+  function getDeliveryFee() {
+    return cart.length > 0 && deliveryType.value === "Entrega a domicilio" ? deliveryFee : 0;
   }
 
   function updatePriceSummary() {
-    const subtotal = cart.reduce(function (sum, item) {
-      return sum + item.lineTotal;
-    }, 0);
-    const fee = cart.length > 0 && deliveryType.value === "Entrega a domicilio" ? deliveryFee : 0;
+    const subtotal = getSubtotal();
+    const fee = getDeliveryFee();
     document.getElementById("subtotal").textContent = currency.format(subtotal);
     document.getElementById("delivery-fee").textContent = currency.format(fee);
     document.getElementById("order-total").textContent = currency.format(subtotal + fee);
+  }
+
+  function updateChangeValidation() {
+    const needsChange = orderForm.elements.payment.value === "Necesito cambio";
+    const total = getSubtotal() + getDeliveryFee();
+    const insufficient = needsChange && changeAmount.value !== "" && Number(changeAmount.value) < total;
+    const message = insufficient
+      ? "El monto debe ser igual o mayor al total de " + currency.format(total) + "."
+      : "";
+    changeAmount.setCustomValidity(message);
+    changeError.textContent = message;
+  }
+
+  function resetOrder() {
+    cart.length = 0;
+    document.querySelectorAll(".menu-card[data-product]").forEach(function (card) {
+      card.querySelectorAll("select").forEach(function (select) {
+        select.selectedIndex = 0;
+      });
+      card.querySelector(".product-quantity").value = "1";
+      const portionField = card.querySelector('select[id$="-count"]');
+      if (portionField) portionField.dispatchEvent(new Event("change"));
+    });
+    waterSelect.value = "no";
+    waterQuantity.value = "0";
+    waterQuantity.disabled = true;
+    document.getElementById("order-notes").value = "";
+    orderForm.querySelector('input[name="payment"][value="Pago exacto"]').checked = true;
+    changeAmount.value = "";
+    changeAmount.required = false;
+    document.getElementById("change-field").classList.add("hidden");
+    renderCart();
+    window.clearTimeout(feedbackTimer);
+    cartFeedback.textContent = "WhatsApp se abrió. Recuerda enviar el mensaje.";
+    feedbackTimer = window.setTimeout(function () {
+      cartFeedback.textContent = "";
+    }, 5000);
   }
 
   function readProduct(card) {
@@ -318,6 +382,7 @@
   document.querySelectorAll("input, textarea, select").forEach(function (field) {
     field.addEventListener("input", function () {
       if (field === waterQuantity && waterSelect.value === "yes") updateWaterQuantity();
+      if (field === changeAmount) updateChangeValidation();
     });
     field.addEventListener("change", function () {
       if (field === deliveryType) updateDeliveryFields();
@@ -357,12 +422,15 @@
       }
     });
 
-    if (portionField && card.dataset.product === "Gordita") {
-      portionField.addEventListener("change", function () {
-        quantityLabel.textContent = portionField.value.startsWith("Sencillo")
-          ? "Órdenes (5 piezas c/u)"
+    if (portionField && (card.dataset.product === "Gordita" || card.dataset.product === "Tostada")) {
+      const updateQuantityLabel = function () {
+        const price = getProductPrice(card.dataset.product, portionField.value);
+        quantityLabel.textContent = price.unit === "orden"
+          ? "Órdenes (" + price.piecesPerUnit + " piezas c/u)"
           : "Piezas";
-      });
+      };
+      portionField.addEventListener("change", updateQuantityLabel);
+      updateQuantityLabel();
     }
 
     card.querySelector(".add-button").addEventListener("click", function () {
@@ -380,7 +448,9 @@
     radio.addEventListener("change", function () {
       const needsChange = radio.value === "Necesito cambio" && radio.checked;
       document.getElementById("change-field").classList.toggle("hidden", !needsChange);
-      document.getElementById("change-amount").required = needsChange;
+      changeAmount.required = needsChange;
+      if (!needsChange) changeAmount.value = "";
+      updateChangeValidation();
     });
   });
 
@@ -396,10 +466,8 @@
     }
 
     const data = new FormData(orderForm);
-    const subtotal = cart.reduce(function (sum, item) {
-      return sum + item.lineTotal;
-    }, 0);
-    const fee = deliveryType.value === "Entrega a domicilio" ? deliveryFee : 0;
+    const subtotal = getSubtotal();
+    const fee = getDeliveryFee();
     const total = subtotal + fee;
     const lines = [
       "Hola, quiero hacer este pedido:",
@@ -422,7 +490,14 @@
       "¿Me confirman el pedido y el tiempo de entrega? Gracias."
     ];
     const whatsappUrl = "https://wa.me/" + mainNumber + "?text=" + encodeURIComponent(lines.join("\n"));
-    window.location.assign(whatsappUrl);
+    const whatsappWindow = window.open("", "_blank");
+    if (!whatsappWindow) {
+      alert("No se pudo abrir WhatsApp. Permite las ventanas emergentes e inténtalo de nuevo.");
+      return;
+    }
+    whatsappWindow.opener = null;
+    whatsappWindow.location.href = whatsappUrl;
+    resetOrder();
   });
 
   updateDeliveryFields();

@@ -79,8 +79,8 @@
                 </div>
                 <div class="dish-content">
                   <p class="price-list">
-                    Sencillo de quesillo o de carne: orden de 5 por $35 · Doble:
-                    $15 por pieza
+                    Sencillo de quesillo: orden de 5 piezas por $35 · Sencillo
+                    de carne: $10 por pieza · Doble: $15 por pieza
                   </p>
                   <p>
                     Calientitas, doraditas y con tus ingredientes favoritos.
@@ -172,8 +172,8 @@
                 </div>
                 <div class="dish-content">
                   <p class="price-list">
-                    Sencillo de quesillo o de carne: $10 por pieza · Doble: $15
-                    por pieza
+                    Sencillo de quesillo: 3 piezas por $20 · Sencillo de carne:
+                    $10 por pieza · Doble: $15 por pieza
                   </p>
                   <p>Crujientes y bien servidas, con todo el sabor de casa.</p>
                   <div class="option-grid">
@@ -186,7 +186,7 @@
                       </select>
                     </div>
                     <div class="option">
-                      <label for="tostada-pieces">Piezas</label
+                      <label for="tostada-pieces">Órdenes (3 piezas c/u)</label
                       ><input
                         id="tostada-pieces"
                         class="product-quantity"
@@ -248,10 +248,7 @@
                   </button>
                 </div>
                 <div class="dish-content">
-                  <p class="price-list">
-                    Sencillo de quesillo, de carne o doble: orden de 5 piezas
-                    por $35
-                  </p>
+                  <p class="price-list">Orden: de 5 piezas por $35</p>
                   <p>Tradición y sazón en cada mordida, recién hechas.</p>
                   <div class="option-grid">
                     <div class="option">
@@ -318,7 +315,7 @@
                 </div>
                 <div class="dish-content">
                   <p class="price-list">
-                    Sencilla mediana: $70 · grande: $90<br />Doble mediana: $80
+                    Sencilla mediana: $65 · grande: $80<br />Doble mediana: $80
                     · grande: $100
                   </p>
                   <p>Un clásico para compartir o para consentirte en grande.</p>
@@ -557,7 +554,9 @@
                   step="0.01"
                   inputmode="decimal"
                   placeholder="Ej. 500"
+                  aria-describedby="change-error"
                 />
+                <p id="change-error" class="field-error" role="status"></p>
               </div>
               <div class="form-field">
                 <label for="order-notes">Notas para tu pedido (opcional)</label
@@ -568,11 +567,11 @@
                 />
               </div>
               <button class="primary-button" type="submit">
-                Preparar pedido en WhatsApp <span aria-hidden="true">↗</span>
+                Solicitar pedido en WhatsApp <span aria-hidden="true">↗</span>
               </button>
               <p class="fine-print">
-                Al presionar el botón, se abrirá directamente WhatsApp con tu
-                pedido dirigido a la cenaduría.
+                Al abrir WhatsApp se limpiará el pedido, pero se conservarán tus
+                datos en esta página. Recuerda enviar el mensaje en WhatsApp.
               </p>
             </form>
           </aside>
@@ -679,8 +678,8 @@
       <!-- <p class="policy-note">Información general del sitio; no sustituye asesoría legal. La Cenaduría debe verificar estos textos y completar cualquier dato de identificación o contacto que exija la normativa aplicable.</p> -->
     </section>
     <footer>
-      &copy; 2026 La Cenaduría · Hecho con cariño y mucho sabor. Todos los derechos
-      reservados, elaborado por:JRG
+      &copy; 2026 La Cenaduría · Hecho con cariño y mucho sabor. Todos los
+      derechos reservados, elaborado por:JRG
     </footer>
 
     <script src="app.js" defer></script>
